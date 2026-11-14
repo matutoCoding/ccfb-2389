@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+:root {
+  /* 间距 8pt grid */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  /* 字阶 */
+  --fs-xs: 14px;
+  --fs-sm: 15px;
+  --fs-md: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-2xl: 28px;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  /* 中性色 slate 一套 */
+  --c-bg: #f8fafc;
+  --c-panel: #ffffff;
+  --c-border: #e2e8f0;
+  --c-text: #0f172a;
+  --c-sub: #64748b;
+  --c-faint: #94a3b8;
+  /* 主色稀有使用 */
+  --c-accent: #2563eb;
+  --c-accent-soft: #eff6ff;
+  --c-warn: #d97706;
+  --c-warn-soft: #fffbeb;
+  --c-danger: #dc2626;
+  --c-danger-soft: #fef2f2;
+  --c-ok: #059669;
+  --c-ok-soft: #ecfdf5;
+  /* 圆角 / 阴影 / 过渡 */
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 8px 24px rgba(15, 23, 42, 0.12);
+  --t-fast: 0.15s;
+  --t: 0.2s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 组件基元 */
+.card {
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  height: 32px;
+  padding: 0 var(--sp-3);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-panel);
+  color: var(--c-text);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+.btn:hover {
+  border-color: var(--c-faint);
+  box-shadow: var(--shadow-sm);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.btn-primary {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+.btn-danger {
+  color: var(--c-danger);
+}
+.btn-sm {
+  height: 26px;
+  padding: 0 var(--sp-2);
+  font-size: var(--fs-xs);
+}
+
+.inp {
+  height: 30px;
+  padding: 0 var(--sp-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-panel);
+  color: var(--c-text);
+  font-size: var(--fs-xs);
+  transition: border-color var(--t-fast);
+}
+.inp:focus {
+  outline: none;
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 2px var(--c-accent-soft);
+}
+.inp-num {
+  width: 72px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.lbl {
+  font-size: var(--fs-xs);
+  color: var(--c-sub);
+}
+
+.sec-title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-text);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px var(--sp-2);
+  border-radius: 999px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+}
+.badge-warn {
+  background: var(--c-warn-soft);
+  color: var(--c-warn);
+}
+.badge-danger {
+  background: var(--c-danger-soft);
+  color: var(--c-danger);
+}
+.badge-ok {
+  background: var(--c-ok-soft);
+  color: var(--c-ok);
+}
+.badge-info {
+  background: var(--c-accent-soft);
+  color: var(--c-accent);
+}
+
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-xs);
+}
+.tbl th {
+  text-align: left;
+  font-weight: var(--fw-medium);
+  color: var(--c-sub);
+  padding: var(--sp-2) var(--sp-2);
+  border-bottom: 1px solid var(--c-border);
+  white-space: nowrap;
+}
+.tbl td {
+  padding: var(--sp-1) var(--sp-2);
+  border-bottom: 1px solid var(--c-border);
+  font-variant-numeric: tabular-nums;
+}
+.tbl tr:last-child td {
+  border-bottom: none;
+}
+
+/* 顶部导航 */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 var(--sp-3);
+  border-radius: var(--radius);
+  color: var(--c-sub);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  transition: all var(--t-fast);
+}
+.nav-link:hover {
+  color: var(--c-text);
+  background: var(--c-bg);
+}
+.nav-link.router-link-active {
+  color: var(--c-accent);
+  background: var(--c-accent-soft);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-border);
+  border-radius: 4px;
+}
